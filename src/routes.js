@@ -1,6 +1,6 @@
 import Dashboard from "views/Dashboard.js";
 import UserProfile from "views/UserProfile.js";
-import Notifications from "views/Notifications.js";
+
 import Login from "views/Login";
 import Logout from "views/Logout";
 
@@ -20,13 +20,7 @@ const dashboardRoutes = [
     component: UserProfile,
     layout: "/admin"
   },
-  {
-    path: "/notifications",
-    name: "Notifications",
-    icon: "nc-icon nc-bell-55",
-    component: Notifications,
-    layout: "/admin"
-  },
+
   {
     path: "/logout",
     name: "log out",

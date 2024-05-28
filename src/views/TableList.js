@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Card, Container, Row, Col, FormControl, InputGroup } from "react-bootstrap";
+import { Card, Container, Row, Col, FormControl, InputGroup, Button } from "react-bootstrap";
 import DataTable from 'react-data-table-component';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 
 const initialData = [
   { id: 1, subscriptionType: "Basic", startDate: "2023-01-01", expiryDate: "2024-01-01", status: "Active" },
@@ -14,7 +16,7 @@ const initialData = [
 
 const columns = [
   { name: 'ID', selector: row => row.id, sortable: true },
-  { name: 'Subscription Type', selector: row => row.subscriptionType, sortable: true },
+  { name: 'Subscription Name', selector: row => row.subscriptionType, sortable: true },
   { name: 'Start Date', selector: row => row.startDate, sortable: true },
   { name: 'Expiry Date', selector: row => row.expiryDate, sortable: true },
   { 
@@ -34,6 +36,18 @@ const columns = [
         {row.status}
       </span>
     ) 
+  },
+  { 
+    name: 'Action',
+    sortable: true,
+    cell: row => (
+      <div style={{ display: "flex", justifyContent: "space-between", flexWrap: 'wrap' }}>
+        <Button variant="info" size="xs" style={{ minWidth: '40px' }}>View</Button>
+        <Button variant="primary" size="xs" style={{ minWidth: '40px' }}>Edit</Button>
+        <Button variant="danger" size="xs" style={{ minWidth: '40px' }}>Delete</Button>
+        {/* Add more buttons here if needed */}
+      </div>
+    )
   }
 ];
 
@@ -49,6 +63,8 @@ const customStyles = {
       '&:nth-of-type(odd)': {
         backgroundColor: '#f3f4f6',
       },
+      display: 'flex',
+      alignItems: 'center'
     },
   },
   pagination: {
@@ -62,6 +78,8 @@ const customStyles = {
       },
     },
   },
+
+ 
 };
 
 function TableList({ setSubscriptionCounts }) {
@@ -95,16 +113,15 @@ function TableList({ setSubscriptionCounts }) {
     setFilteredData(filtered);
   };
 
-  return (
+   return (
     <>
       <Container fluid>
         <Row>
           <Col md="12">
             <Card className="strpied-tabled-with-hover">
-              <Card.Header >
+              <Card.Header>
                 <div>
                   <Card.Title as="h4">Subscription List</Card.Title>
-                
                 </div>
                 <InputGroup className="ml-auto" style={{ width: '300px' }}>
                   <FormControl

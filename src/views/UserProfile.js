@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, } from "react";
 import { Button, Card, Form, Container, Row, Col } from "react-bootstrap";
 
 function User() {
   // State to store form data
   const [formData, setFormData] = useState({
-    subscriptionType: "",
-    email: "",
+    subscriptionName: "",
+    emails: "", // Single input for multiple emails
     startDate: "",
     expiryDate: "",
     description: ""
@@ -23,21 +23,30 @@ function User() {
     setLoading(true); // Set loading state to true while form is being submitted
     const url = 'https://dummy.restapiexample.com/api/v1/create'; // URL to post form data
 
+    // Process emails input into an array
+    const emailsArray = formData.emails.split(',').map(email => email.trim());
+
+    // Create payload including emails array
+    const payload = {
+      ...formData,
+      emails: emailsArray
+    };
+
     fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(formData)
+      body: JSON.stringify(payload)
     })
       .then(response => {
-        console.log(response)
-        console.log(formData)
+        console.log(response);
+        console.log(payload);
         if (response.ok) {
           setSubmissionStatus("success");
           setFormData({
-            subscriptionType: "",
-            email: "",
+            subscriptionName: "",
+            emails: "",
             startDate: "",
             expiryDate: "",
             description: ""
@@ -84,12 +93,12 @@ function User() {
                   <Row>
                     <Col md="6">
                       <Form.Group>
-                        <label style={{ fontFamily: "Roboto, sans-serif" }}>Subscription Type</label>
+                        <label style={{ fontFamily: "Roboto, sans-serif" }}>Subscription Name</label>
                         <Form.Control
                           placeholder="Subscription"
                           type="text"
-                          name="subscriptionType"
-                          value={formData.subscriptionType}
+                          name="subscriptionName"
+                          value={formData.subscriptionName}
                           onChange={handleInputChange}
                           style={{ fontFamily: "Roboto, sans-serif" }}
                         ></Form.Control>
@@ -98,13 +107,13 @@ function User() {
                     <Col md="6">
                       <Form.Group>
                         <label htmlFor="exampleInputEmail1" style={{ fontFamily: "Roboto, sans-serif" }}>
-                          Stakeholder Email Address
+                          Stakeholder Email Addresses (comma-separated)
                         </label>
                         <Form.Control
-                          placeholder="Email"
-                          type="email"
-                          name="email"
-                          value={formData.email}
+                          placeholder="Emails"
+                          type="text"
+                          name="emails"
+                          value={formData.emails}
                           onChange={handleInputChange}
                           style={{ fontFamily: "Roboto, sans-serif" }}
                         ></Form.Control>

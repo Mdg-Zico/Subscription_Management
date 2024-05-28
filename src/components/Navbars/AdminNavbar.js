@@ -2,15 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { Navbar, Container, Nav, Dropdown, Button } from 'react-bootstrap';
 
 function Header() {
-  const [navbarWidth, setNavbarWidth] = useState(window.innerWidth > 600 ? '82%' : '100%');
+  const [navbarWidth, setNavbarWidth] = useState('100%');
 
   useEffect(() => {
     const handleResize = () => {
       setNavbarWidth(window.innerWidth > 600 ? '82%' : '100%');
     };
 
-    window.addEventListener('resize', handleResize);
+    // Set initial width
+    handleResize();
 
+    window.addEventListener('resize', handleResize);
     return () => {
       window.removeEventListener('resize', handleResize);
     };
