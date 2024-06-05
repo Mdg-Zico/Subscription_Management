@@ -3,7 +3,8 @@
   "version": "2.0.1",
   "dependencies": {
     "@fortawesome/fontawesome-free": "5.15.2",
-    "bootstrap": "^4.6.0",
+    "axios": "^1.7.2",
+    "bootstrap": "^4.6.2",
     "chartist": "0.11.4",
     "gulp": "4.0.2",
     "gulp-append-prepend": "1.0.9",
@@ -17,7 +18,8 @@
     "react-router-dom": "5.2.0",
     "react-scripts": "^5.0.1",
     "reactstrap": "8.8.1",
-    "sass": "1.53.0"
+    "sass": "1.53.0",
+    "styled-components": "^6.1.11"
   },
   "optionalDependencies": {
     "jquery": "3.5.1",
@@ -32,6 +34,7 @@
     "compile:scss": "sass src/assets/scss/light-bootstrap-dashboard-pro-react.scss src/assets/css/light-bootstrap-dashboard-pro-react.css",
     "minify:scss": "sass src/assets/scss/light-bootstrap-dashboard-pro-react.scss src/assets/css/light-bootstrap-dashboard-pro-react.min.css --style compressed",
     "build:scss": "npm run compile:scss && npm run minify:scss"
+    
   },
   "peerDependencies": {
     "react": ">=16.8.0",

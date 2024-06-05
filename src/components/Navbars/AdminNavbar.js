@@ -99,21 +99,14 @@ function Header() {
                 </Dropdown.Toggle>
                 <Dropdown.Menu aria-labelledby="navbarDropdownMenuLink">
                   <Dropdown.Item href="#pablo" onClick={e => e.preventDefault()}>
-                    Action
+                    My Profile
                   </Dropdown.Item>
-                  <Dropdown.Item href="#pablo" onClick={e => e.preventDefault()}>
-                    Another action
+                 {/* <div className="divider"></div> */}
+                  <Dropdown.Item href="../views/Logout.js" onClick={e => e.preventDefault()}>
+                    Log Out
                   </Dropdown.Item>
-                  <Dropdown.Item href="#pablo" onClick={e => e.preventDefault()}>
-                    Something
-                  </Dropdown.Item>
-                  <Dropdown.Item href="#pablo" onClick={e => e.preventDefault()}>
-                    Something else here
-                  </Dropdown.Item>
-                  <div className="divider"></div>
-                  <Dropdown.Item href="#pablo" onClick={e => e.preventDefault()}>
-                    Separated link
-                  </Dropdown.Item>
+                  
+                 
                 </Dropdown.Menu>
               </Dropdown>
             </Nav>

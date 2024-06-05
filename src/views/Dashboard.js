@@ -79,6 +79,7 @@ function Dashboard() {
         </Row>
        
         <TableList setSubscriptionCounts={setSubscriptionCounts} />
+       
       </Container>
     </>
   );
