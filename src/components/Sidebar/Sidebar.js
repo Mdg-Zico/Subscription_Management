@@ -33,7 +33,7 @@ function Sidebar({ color, image, routes }) {
       <div className="sidebar-wrapper" style={{backgroundColor: "rgb(1, 41, 112)"}} >
         <div className="">
 
-                  <img className="d-none d-lg-block " style={{width: "200px", height: "60px", marginLeft: "30px"}} src={require("assets/img/aedc-logo.png")} alt="..." /> 
+                  <h1  style={{fontFamily: "Helvetica",   width: "200px", height: "60px", marginLeft: "30px", marginTop: "8px", textAlign: "center"}}>AEDC</h1> 
                    
                  
                  

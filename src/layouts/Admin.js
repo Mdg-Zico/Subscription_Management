@@ -21,7 +21,7 @@ function Admin() {
     return routes.map((prop, key) => {
       if (prop.layout === "/admin") {
         return (
-          <Route
+          <Route 
             path={prop.layout + prop.path}
             render={(props) => <prop.component {...props} />}
             key={key}
