@@ -4,6 +4,7 @@ import DataTable from 'react-data-table-component';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SubscriptionModal from './SubscriptionModal';
 
+
 const initialData = [
   { id: 1, subscriptionType: "Basic", startDate: "2023-01-01", expiryDate: "2024-01-01", status: "Active" },
   { id: 2, subscriptionType: "Premium", startDate: "2022-06-15", expiryDate: "2023-06-15", status: "Expired" },
