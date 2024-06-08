@@ -1,4 +1,4 @@
-import React, { useState, } from "react";
+import React, { useState } from "react";
 import { Button, Card, Form, Container, Row, Col } from "react-bootstrap";
 
 function User() {
@@ -20,17 +20,32 @@ function User() {
   // Function to handle form submission
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    // Validation checks
+    if (!formData.subscriptionName || !formData.emails || !formData.startDate || !formData.expiryDate || !formData.description) {
+      setSubmissionStatus("Please fill out all required fields.");
+      return;
+    }
+
+    if (new Date(formData.expiryDate) < new Date(formData.startDate)) {
+      setSubmissionStatus("Expiry date cannot be earlier than start date.");
+      return;
+    }
+
     setLoading(true); // Set loading state to true while form is being submitted
     const url = 'https://dummy.restapiexample.com/api/v1/create'; // URL to post form data
 
-    // Process emails input into an array
-    const emailsArray = formData.emails.split(',').map(email => email.trim());
+    // Process emails input into a space-separated string
+    const emailsString = formData.emails.split(',').map(email => email.trim()).join(' ');
 
-    // Create payload including emails array
+    // Create payload including the space-separated emails string
     const payload = {
       ...formData,
-      emails: emailsArray
+      emails: emailsString
     };
+
+    // Log the form data before submission
+    console.log("Form Data:", payload);
 
     fetch(url, {
       method: "POST",
@@ -39,10 +54,11 @@ function User() {
       },
       body: JSON.stringify(payload)
     })
-      .then(response => {
-        console.log(response);
-        console.log(payload);
-        if (response.ok) {
+      .then(response => response.json())
+      .then(data => {
+        // Log the response from the server
+        console.log("Response Data:", data);
+        if (data.status === "success") {
           setSubmissionStatus("success");
           setFormData({
             subscriptionName: "",
@@ -78,7 +94,7 @@ function User() {
       {loading && <div className="loading">Submitting...</div>}
       {submissionStatus && (
         <div className={`submission-status ${submissionStatus}`}>
-          {submissionStatus === "success" ? "Form submitted successfully" : "Failed to submit form"}
+          {submissionStatus === "success" ? "Form submitted successfully" : submissionStatus}
         </div>
       )}
       <Container fluid>

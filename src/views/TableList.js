@@ -63,11 +63,17 @@ function TableList({ setSubscriptionCounts }) {
     // Filter the data to exclude the deleted row
     const updatedData = filteredData.filter(item => item.id !== id);
   
+    // Reassign IDs to maintain sequential order
+    const reassignedData = updatedData.map((item, index) => ({
+      ...item,
+      id: index + 1
+    }));
+  
     // Update the filtered data state
-    setFilteredData(updatedData);
+    setFilteredData(reassignedData);
   
     // Update the subscription counts (optional)
-    const counts = updatedData.reduce(
+    const counts = reassignedData.reduce(
       (acc, item) => {
         acc[item.status] = (acc[item.status] || 0) + 1;
         return acc;
@@ -77,7 +83,6 @@ function TableList({ setSubscriptionCounts }) {
     setSubscriptionCounts(counts);
   };
   
-
   const handleClose = () => {
     setShowModal(false);
     setCurrentRow(null);

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
 function Login() {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const history = useHistory();
 
@@ -30,13 +30,12 @@ function Login() {
         <p style={{fontFamily: "openSans"}}>Please log in to continue</p>
         <form onSubmit={handleLogin} style={{ textAlign: "left" }}>
           <div className="form-group">
-            <label style={{ marginBottom: "5px", fontFamily: "OpenSans", fontWeight: "bolder" }}>Username</label>
+            <label style={{ marginBottom: "5px", fontFamily: "OpenSans", fontWeight: "bolder" }}>Email</label>
             <input
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="form-control"
-             
               style={{ opacity: 0.7, borderRadius: "10px", border: "1px solid #ced4da", padding: "8px" }}
             />
           </div>
@@ -47,7 +46,6 @@ function Login() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="form-control"
-            
               style={{ opacity: 0.7, borderRadius: "10px", border: "1px solid #ced4da", padding: "8px" }}
             />
           </div>

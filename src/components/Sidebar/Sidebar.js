@@ -28,12 +28,12 @@ function Sidebar({ color, image, routes }) {
     return location.pathname.indexOf(routeName) > -1 ? "active" : "";
   };
   return (
-    <div className="sidebar" data-image={image} data-color={color}>
+    <div className="sidebar" data-image={image} data-color={color} >
       
-      <div className="sidebar-wrapper" style={{color: "darkblue"}}>
+      <div className="sidebar-wrapper" style={{backgroundColor: "rgb(1, 41, 112)"}} >
         <div className="">
 
-                  <img className="d-none d-lg-block " style={{width: "150px", height: "60px", marginLeft: "50px"}} src={require("assets/img/aedc-logo.png")} alt="..." /> 
+                  <img className="d-none d-lg-block " style={{width: "200px", height: "60px", marginLeft: "30px"}} src={require("assets/img/aedc-logo.png")} alt="..." /> 
                    
                  
                  

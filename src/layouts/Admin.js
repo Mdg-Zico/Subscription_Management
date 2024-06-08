@@ -12,7 +12,7 @@ import sidebarImage from "assets/img/sidebar-3.jpg";
 
 function Admin() {
   const [image, setImage] = React.useState(sidebarImage);
-  const [color, setColor] = React.useState("black");
+  const [color, setColor] = React.useState("rgb(1, 1, 2)");
   const [hasImage, setHasImage] = React.useState(true);
   const location = useLocation();
   const mainPanel = React.useRef(null);
